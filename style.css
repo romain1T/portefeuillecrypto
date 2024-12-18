@@ -1,0 +1,291 @@
+/* Styles généraux */
+body {
+    background-color: #000;
+	background-image: url("assets/background1.gif");
+    color: #00fff2;
+    font-family: 'Courier New', monospace;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    overflow-x: hidden;
+}
+
+h1, h2 {
+    text-shadow: 0 0 10px #00fff2;
+    text-align: center;
+    margin: 10px 0;
+	animation: stroke 3s forwards;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh; /* Vue complète */
+}
+
+/* Header avec Background Selector */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    box-shadow: 0 0 10px #00fff2;
+    border-bottom: 1px solid #00fff2;
+}
+
+.background-selector {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.9rem;
+    color: #00fff2;
+    text-shadow: 0 0 5px #00fff2;
+}
+
+.bg-options {
+    display: flex;
+    gap: 5px;
+}
+
+.bg-option {
+    width: 40px;
+    height: 25px;
+    border: 1px solid #00fff2;
+    box-shadow: 0 0 5px #00fff2;
+    cursor: pointer;
+    background-size: cover;
+    background-position: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.bg-option:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 10px #00fff2;
+}
+
+/* Section supérieure : Investissements et Ventes */
+.top-section {
+    display: flex;
+    gap: 10px;
+    height: 50%; /* La moitié supérieure de l'écran */
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.panel {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #00fff2;
+    box-shadow: 0 0 20px #00fff2;
+    background: rgba(0, 0, 0, 0.9);
+    overflow: auto;
+}
+
+/* Formulaires d'ajout */
+.investment-form, .sales-form {
+    display: flex;
+    gap: 5px;
+    margin-bottom: 10px;
+}
+
+input, button {
+    padding: 8px;
+    border: none;
+    background: #001f3f;
+    color: #00fff2;
+    box-shadow: 0 0 10px #00fff2;
+    outline: none;
+    font-size: 0.9rem;
+    transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+button {
+    cursor: pointer;
+}
+
+button:hover {
+    background: #00fff2;
+    color: #001f3f;
+    box-shadow: 0 0 15px #00fff2;
+}
+
+/* Tableaux */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+}
+
+th, td {
+    border: 1px solid #00fff2;
+    padding: 5px;
+    text-align: center;
+    color: #00fff2;
+}
+
+th {
+    background-color: #001f3f;
+}
+
+td {
+    background: rgba(0, 31, 63, 0.5);
+}
+
+td.crypto-cell img {
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+    border-radius: 50%;
+}
+
+td button {
+    padding: 5px;
+    font-size: 0.8rem;
+    background: red;
+    color: white;
+    box-shadow: 0 0 5px red;
+}
+
+td button:hover {
+    background: darkred;
+    box-shadow: 0 0 10px red;
+}
+
+.delete-btn {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    box-shadow: 0 0 5px red;
+    transition: all 0.3s ease;
+}
+
+.delete-btn:hover {
+    background-color: darkred;
+    box-shadow: 0 0 10px red;
+}
+
+
+/* Section TradingView (pleine hauteur) */
+.tradingview-section {
+    height: 50vh; /* Prend toute la moitié inférieure visible */
+	margin: 10px;
+    box-shadow: 0 0 20px #00fff2;
+    border: 1px solid #00fff2;
+    background: rgba(0, 0, 0, 0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#tradingview-widget-container {
+    height: 100%;
+    width: 100%;
+}
+
+/* Section Charts */
+.bottom-section {
+    margin: 10px;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.9);
+    box-shadow: 0 0 20px #00fff2;
+    border: 1px solid #00fff2;
+    min-height: 400px; /* Taille minimale */
+}
+canvas {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+/* Retrocompatibilité pour mobile */
+@media (max-width: 768px) {
+    body {
+        margin: 0;
+        padding: 0;
+        overflow-x: hidden; /* Empêche les débordements horizontaux */
+        box-sizing: border-box;
+    }
+
+    /* Conteneur principal */
+    .container {
+        display: flex;
+        flex-direction: column; /* Aligne les sections verticalement */
+        height: 100vh; /* Utilise toute la hauteur de l'écran */
+    }
+
+    /* Section supérieure (Investissement et Vente) */
+    .top-section {
+        display: flex;
+        flex-direction: column;
+        flex: 3; /* Plus d'espace pour les tableaux */
+        gap: 10px;
+    }
+
+    .panel {
+        width: 100%;
+        flex: 1; /* Chaque tableau prend la moitié de la section top */
+        overflow-y: auto; /* Permet le défilement si nécessaire */
+        margin: 0;
+    }
+
+    /* TradingView et Charts en bas */
+    .tradingview-section {
+        flex: 2; /* Moins de hauteur pour TradingView */
+        width: 100%;
+        overflow: hidden;
+    }
+
+    .bottom-section {
+        flex: 2; /* Même hauteur que TradingView */
+        width: 100%;
+        overflow-x: hidden;
+        margin: 0;
+    }
+
+    .bottom-section canvas {
+        width: 100% !important; /* Empêche le débordement horizontal */
+        height: auto;
+        box-sizing: border-box;
+    }
+
+    /* Centrer le titre */
+    h1 {
+        font-size: 1.8rem;
+        text-align: center;
+        margin: 10px 0;
+    }
+
+    /* Tableaux */
+    table {
+        font-size: 0.85rem;
+        width: 100%;
+        border-collapse: collapse; /* Ajuste les bordures */
+    }
+
+    th, td {
+        padding: 8px;
+        text-align: center;
+        box-sizing: border-box;
+    }
+
+    /* Background Selector */
+    .background-selector {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 5px;
+        margin: 10px auto;
+        max-width: 100%;
+    }
+
+    .bg-options {
+        display: flex;
+        max-width: 100%;
+    }
+}
+
+
+
